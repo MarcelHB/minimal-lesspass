@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Minimal frontend for LessPass</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline; style-src 'unsafe-inline'">
+    <meta http-equiv="X-WebKit-CSP" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'">
+    <meta name="viewport" content="width=device-with, initial-scale=1, maximum-scale=1">
+    <style>
+      form > div {
+        margin: 3px;
+      }
+
+      form > div > label {
+        display: inline-block;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="lp-form" autocomplete="off">
+      <div>
+        <label for="context">Context:</label>
+        <input type="text" name="context"/>
+      </div>
+
+      <div>
+        <label for="identifier">Identifier:</label>
+        <input type="text" name="identifier" inputmode="email"/>
+      </div>
+
+      <div>
+        <label for="masterpassword">Master password:</label>
+        <input type="password" name="masterpassword" onkeyup="updateChecksum()"/>
+      </div>
+
+      <div>
+        <label for="checksum">Checksum:</label><br />
+        <span class="lp-mp-render"></span>
+      </div>
+
+      <div>
+        <label for="number">Number:</label>
+        <input type="number" name="number" value="1"/>
+      </div>
+
+      <div>
+        <label for="length">Length:</label>
+        <input type="number" name="length" value="32"/>
+      </div>
+
+      <div>
+        <input type="checkbox" name="rules[]" value="uppercase" checked="checked">A-Z
+        <input type="checkbox" name="rules[]" value="lowercase" checked="checked">a-z
+        <input type="checkbox" name="rules[]" value="numbers" checked="checked">0-9
+        <input type="checkbox" name="rules[]" value="symbols" checked="checked">@$!
+      </div>
+
+      <div>
+        <input type="button" value="Generate (iOS)" onclick="generatePassword()">
+        <input type="button" value="Generate &amp; Clipboard (non-iOS)" onclick="generateAndCopyPassword()">
+      </div>
+
+      <div>
+        <label for="result">Result:</label>
+        <input type="text" name="result" readonly="readonly"/>
+      </div>
+
+      <div>
+        <input type="button" value="Clear" onclick="clearForm()"/>
+        <input type="button" value="Clipboard &amp; Clear (iOS)" onclick="clipboardAndClear()"/>
+      </div>
+
+      <div style="color: gray; font-size: 8pt;">
+          This program is free software: you can redistribute it and/or modify
+          it under the terms of the GNU General Public License as published by
+          the Free Software Foundation, either version 3 of the License, or
+          (at your option) any later version.
+
+          This program is distributed in the hope that it will be useful,
+          but WITHOUT ANY WARRANTY; without even the implied warranty of
+          MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+          GNU General Public License for more details.
+
+          You should have received a copy of the GNU General Public License
+          along with this program.  If not, see <a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>
+      </div>
+    </form>
+  </body>
+  <!-- 
+    Minified source code of Lesspass Javascript libraries and dependencies.
+
+    Lesspass JS libraries Copyright (C) 2020 the collaborators at lesspass.com
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>. 
+  -->
+  <script src="../dist/deps-min.js" inline></script>
+  <!-- Local JS controller code. -->
+  <script src="../js/form.js" inline></script>
+</html>

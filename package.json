@@ -1,0 +1,24 @@
+{
+  "name": "minimal-lesspass",
+  "version": "1.0.0",
+  "description": "Small, self-contained LessPass HTML frontend.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lesspass"
+  ],
+  "author": "MarcelHB",
+  "license": "GPLv3",
+  "dependencies": {
+    "lesspass": "9.2.0"
+  },
+  "devDependencies": {
+    "browserify": "16.5.1",
+    "gulp": "4.0.2",
+    "gulp-inline-source": "4.0.0",
+    "gulp-minify": "3.1.0",
+    "vinyl-source-stream": "2.0.0"
+  }
+}
